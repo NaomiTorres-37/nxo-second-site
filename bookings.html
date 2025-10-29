@@ -17,16 +17,40 @@
       --muted:#c7cbd3;       
       --border:#3a3f47;
     }
+    .booking-section{
+    background-color: var(--card);
+    color: var(--text);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+  booking-section .form-label{ color: var(--text); }
+
+  booking-section .form-control,
+  .booking-section .form-select{
+    background-color:#1f2329;
+    color: var(--text);
+    border-color:#434a55;
+  }
+  .booking-section .form-control::placeholder{ color:#9aa1ac; }
+  .booking-section .form-control:focus,
+  .booking-section .form-select:focus{
+    border-color: var(--navy);
+    box-shadow: 0 0 0 .2rem rgba(15,42,85,.25);
+  }
+
+  /* navy button */
+  .btn-navy{
+    background-color: var(--navy);
+    color:#fff;
+    border:none;
+  }
+  .btn-navy:hover{ background-color: var(--navy-600); }
   </style>
 
-.booking-section{
-  background-color: var(--card);
-  color: var(--text);
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 1px solid var(--border);
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-}
+
+
 
 
 
@@ -62,6 +86,7 @@
   </nav>
   <!-- booking form -->
   <section class="container my-5 booking-section">
+    <div class="mx-auto" style="max-width: 720px;">
     <h2 class="mb-4 text-center">Book A Guard Or Service</h2>
     
     <form>
@@ -69,41 +94,46 @@
         <label for="name" class="form-label">Full Name</label>
         <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
       </div>
-  
-      <label for="service">Select Service:</label><br>
-      <select id="service" name="service" required>
+      
+      <div class="mb-3">
+      <label for="service" class="form-label">Select Service:</label>
+      <select id="service" name="service" class="form-select" required>
         <option value="">--Please choose a service--</option>
-        <option value="celebrity-protection">Celebrity Protection</option>
-        <option value="event-security">Event Security</option>
-        <option value="personal-bodyguard">Personal Bodyguard</option>
-        <option value="risk-assessment">Risk Assessment & Consulting</option>
-      </select><br><br>
+        <option value="Celebrity">Celebrity Protection</option>
+        <option value="Event-Security">Event Security</option>
+        <option value="Personal-Bodyguard">Personal Bodyguard</option>
+        <option value="Risk-Assessment">Risk Assessment &amp; Consulting</option>
+      </select>
+      </div>
 
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
       </div>
   
-      <div class="mb-3">
+      <div class="row g-3">
+        <div class="col-md-6">
         <label for="date" class="form-label">Preferred Date</label>
         <input type="date" class="form-control" id="date" required>
       </div>
   
-      <div class="mb-3">
+      <div class="col-md-6">
         <label for="time" class="form-label">Preferred Time</label>
         <input type="time" class="form-control" id="time" required>
       </div>
+      </div>
   
-      <div class="mb-3">
+      <div class="mb-3 mt-3">
         <label for="notes" class="form-label">Additional Notes</label>
         <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests or notes"></textarea>
       </div>
   
-      <button type="submit" class="btn btn-primary">Submit Booking</button>
-    
-      <p style="font-size: 0.9em; color: #555;">* Someone from our team will reach out within 24-48 hours.</p>
-
-    </form>
+      <button type="submit" class="btn btn-navy w-100">Submit Booking</button>
+    <p class="mt-3 mb-0 text-center" style="color: var(--muted); font-size: .95rem;">
+      * Someone from our team will reach out within 24–48 hours.
+      </p>
+      </form>
+      </div>
   </section>
   
 
