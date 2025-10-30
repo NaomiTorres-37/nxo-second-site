@@ -22,6 +22,7 @@
       --panel-2:#141927;    /* darker fields */
       --border:#2a3143;     /* borders */
       --ring: rgba(15,42,85,.35);
+      --light-text:#f0f3fa;
     }
     html,body{height:100%;}
     body{
@@ -63,6 +64,12 @@
     .form-control:focus, .form-select:focus{
       border-color: var(--navy);
       box-shadow: 0 0 0 .25rem var(--ring);
+    }
+
+    .sidebar-title,
+    .sidebar-subtitle,
+    .sidebar.contact {
+      color: var(--light-text);
     }
 
     .btn-navy{ background: var(--navy); color:#fff; border:none; }
@@ -209,18 +216,18 @@
         <div class="col-12 col-lg-5">
           <div class="card card-elevated h-100">
             <div class="card-body p-4 p-md-5 d-flex flex-column">
-              <h3 class="h5 mb-3">Need help before booking?</h3>
-              <p class="text-secondary" style="color:#b7c3d9 !important;">
+              <h3 class="h5 mb-3 sidebar-title">Need help before booking?</h3>
+              <p class="text-secondary sidebar-contact">
                 Our team can advise on staffing, venue risk, and arrival logistics.
               </p>
-              <ul class="list-unstyled mb-4">
+              <ul class="list-unstyled mb-4 sidebar-contact">
                 <li class="mb-2"><strong>Email:</strong> support@supremesecurity.example</li>
                 <li class="mb-2"><strong>Phone:</strong> (212) 555‑0136</li>
                 <li class="mb-2"><strong>Hours:</strong> 9am–6pm ET, Mon–Sat</li>
               </ul>
               <hr class="muted-divider">
-              <h4 class="h6 mt-3 mb-2">What happens next?</h4>
-              <ol class="mb-0 small text-secondary" style="color:#aab8d0 !important;">
+              <h4 class="h6 mt-3 mb-2 sidebar-subtitle">What happens next?</h4>
+              <ol class="mb-0 small text-secondary sidebar-contact">
                 <li>We review your request and may follow up for details.</li>
                 <li>You'll get a confirmation email and a tentative quote.</li>
                 <li>Secure your date with a deposit link.</li>
