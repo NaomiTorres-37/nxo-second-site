@@ -1,143 +1,329 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Booking - SUPREME SECURITY</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bookings — SUPREME SECURITY</title>
 
-  <!-- Bootstrap CSS -->
+  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- so I can make the form a darker grey -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
+      /* Brand pulled from your draft */
       --navy:#0f2a55;
       --navy-600:#15346b;
-      --card:#2b2f36;        
-      --text:#f5f7fa;        
-      --muted:#c7cbd3;       
-      --border:#3a3f47;
+      --ink:#0e1220;
+      --muted:#97a0af;
+      --panel:#1b2030;      /* panel bg */
+      --panel-2:#141927;    /* darker fields */
+      --border:#2a3143;     /* borders */
+      --ring: rgba(15,42,85,.35);
     }
-    .booking-section{
-    background-color: var(--card);
-    color: var(--text);
-    padding: 2rem;
-    border-radius: 1rem;
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
-  }
-  booking-section .form-label{ color: var(--text); }
+    html,body{height:100%;}
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1100px 500px at 90% -10%, rgba(15,42,85,.18), transparent 60%),
+        radial-gradient(800px 380px at -10% 110%, rgba(20,25,39,.35), transparent 60%),
+        #0b0f19;
+      color: #eef2ff;
+    }
 
-  booking-section .form-control,
-  .booking-section .form-select{
-    background-color:#1f2329;
-    color: var(--text);
-    border-color:#434a55;
-  }
-  .booking-section .form-control::placeholder{ color:#9aa1ac; }
-  .booking-section .form-control:focus,
-  .booking-section .form-select:focus{
-    border-color: var(--navy);
-    box-shadow: 0 0 0 .2rem rgba(15,42,85,.25);
-  }
+    /* Navbar */
+    .navbar{
+      background: rgba(11,15,25,.85) !important;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
 
-  /* navy button */
-  .btn-navy{
-    background-color: var(--navy);
-    color:#fff;
-    border:none;
-  }
-  .btn-navy:hover{ background-color: var(--navy-600); }
+    /* Header */
+    .page-header{ padding: 56px 0 16px; }
+    .eyebrow{ display:inline-flex; gap:.5rem; align-items:center; padding:.375rem .75rem; border-radius:999px; font-weight:600; font-size:.9rem; color:#cfe1ff; background:rgba(15,42,85,.16); border:1px solid rgba(15,42,85,.35); }
+
+    /* Booking section */
+    .booking-section{ padding: 32px 0 72px; }
+    .card-elevated{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 24px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05);
+      border-radius: 18px;
+    }
+
+    .form-label{ color:#d8deea; font-weight:600; }
+    .form-text{ color: var(--muted); }
+
+    .form-control, .form-select{ background: var(--panel-2); color:#e9eefc; border:1px solid var(--border); }
+    .form-control::placeholder{ color:#9aa1ac; }
+    .input-group-text{ background: var(--panel-2); color:#c8d0e3; border-color: var(--border); }
+
+    .form-control:focus, .form-select:focus{
+      border-color: var(--navy);
+      box-shadow: 0 0 0 .25rem var(--ring);
+    }
+
+    .btn-navy{ background: var(--navy); color:#fff; border:none; }
+    .btn-navy:hover{ background: var(--navy-600); }
+
+    .muted-divider{ border-color: rgba(255,255,255,.08) !important; }
+
+    footer{ color:#9fb0c9; }
   </style>
-
-
-
-
-
-
-
 </head>
 <body>
-
-  <!-- Navbar goes here later -->
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">SUPREME SECURITY</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand fw-bold" href="index.html">SUPREME SECURITY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div id="nav" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="bookings.html">Bookings</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="bookings.html">Bookings</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  <!-- booking form -->
-  <section class="container my-5 booking-section">
-    <div class="mx-auto" style="max-width: 720px;">
-    <h2 class="mb-4 text-center">Book A Guard Or Service</h2>
-    
-    <form>
-      <div class="mb-3">
-        <label for="name" class="form-label">Full Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
-      </div>
-      
-      <div class="mb-3">
-      <label for="service" class="form-label">Select Service:</label>
-      <select id="service" name="service" class="form-select" required>
-        <option value="">--Please choose a service--</option>
-        <option value="Celebrity">Celebrity Protection</option>
-        <option value="Event-Security">Event Security</option>
-        <option value="Personal-Bodyguard">Personal Bodyguard</option>
-        <option value="Risk-Assessment">Risk Assessment &amp; Consulting</option>
-      </select>
-      </div>
 
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-      </div>
-  
-      <div class="row g-3">
-        <div class="col-md-6">
-        <label for="date" class="form-label">Preferred Date</label>
-        <input type="date" class="form-control" id="date" required>
-      </div>
-  
-      <div class="col-md-6">
-        <label for="time" class="form-label">Preferred Time</label>
-        <input type="time" class="form-control" id="time" required>
-      </div>
-      </div>
-  
-      <div class="mb-3 mt-3">
-        <label for="notes" class="form-label">Additional Notes</label>
-        <textarea class="form-control" id="notes" rows="3" placeholder="Any special requests or notes"></textarea>
-      </div>
-  
-      <button type="submit" class="btn btn-navy w-100">Submit Booking</button>
-    <p class="mt-3 mb-0 text-center" style="color: var(--muted); font-size: .95rem;">
-      * Someone from our team will reach out within 24–48 hours.
+  <!-- Header -->
+  <header class="page-header text-center border-bottom border-opacity-25">
+    <div class="container">
+      <span class="eyebrow mb-3">Book with confidence</span>
+      <h1 class="display-5 fw-bold">Schedule a Security Service</h1>
+      <p class="lead text-secondary" style="color:#b7c3d9 !important; max-width: 760px; margin: 0 auto;">
+        Tell us what you need and your preferred time. A coordinator will confirm by email within 24 hours.
       </p>
-      </form>
-      </div>
-  </section>
-  
+    </div>
+  </header>
 
-  <!-- Bootstrap JS for menu -->
+  <!-- Booking -->
+  <section class="booking-section">
+    <div class="container">
+      <div class="row g-4 align-items-stretch">
+        <!-- Form -->
+        <div class="col-12 col-lg-7">
+          <div class="card card-elevated h-100">
+            <div class="card-body p-4 p-md-5">
+              <h2 class="h4 mb-4">Client & Service Details</h2>
+              <form id="bookingForm" class="needs-validation" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="First & Last" required>
+                    <div class="invalid-feedback">Please enter your full name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text" id="emailPre">@</span>
+                      <input type="email" class="form-control" id="email" aria-describedby="emailPre emailHelp" placeholder="you@example.com" required>
+                      <div class="invalid-feedback">Enter a valid email address.</div>
+                    </div>
+                    <div id="emailHelp" class="form-text">We'll never share your email.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="(555) 555-5555" minlength="10" required>
+                    <div class="invalid-feedback">Please provide a valid phone number.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="service" class="form-label">Select Service</label>
+                    <select id="service" class="form-select" required>
+                      <option value="">Choose...</option>
+                      <option value="Celebrity">Celebrity Protection</option>
+                      <option value="Event-Security">Event Security</option>
+                      <option value="Personal-Bodyguard">Personal Bodyguard</option>
+                      <option value="Risk-Assessment">Risk Assessment & Consulting</option>
+                    </select>
+                    <div class="invalid-feedback">Please pick a service.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="date" class="form-label">Preferred Date</label>
+                    <input type="date" class="form-control" id="date" required>
+                    <div class="invalid-feedback">Select a date.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="time" class="form-label">Preferred Time</label>
+                    <input type="time" class="form-control" id="time" required>
+                    <div class="invalid-feedback">Select a time.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="location" class="form-label">Location / Address</label>
+                    <input type="text" class="form-control" id="location" placeholder="Venue or address" required>
+                    <div class="invalid-feedback">Please provide a location.</div>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="duration" class="form-label">Duration (hrs)</label>
+                    <input type="number" class="form-control" id="duration" min="1" max="24" step="1" value="4" required>
+                    <div class="invalid-feedback">Enter 1–24 hours.</div>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="guards" class="form-label"># Guards</label>
+                    <input type="number" class="form-control" id="guards" min="1" max="20" value="1" required>
+                    <div class="invalid-feedback">At least 1 guard.</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="notes" class="form-label">Additional Notes</label>
+                    <textarea class="form-control" id="notes" rows="4" placeholder="Any special requests or context"></textarea>
+                  </div>
+
+                  <!-- Anti-bot honeypot (hidden) -->
+                  <div class="d-none">
+                    <label>Leave this field empty <input type="text" id="company" name="company" /></label>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="1" id="tos" required>
+                      <label class="form-check-label" for="tos">I agree to the Terms & Privacy Policy.</label>
+                      <div class="invalid-feedback">Please accept to continue.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 pt-2">
+                    <button id="submitBtn" class="btn btn-navy btn-lg w-100" type="submit">
+                      <span class="submit-copy">Submit Booking</span>
+                      <span class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+                    </button>
+                    <p class="text-center mt-3 mb-0 form-text">A coordinator will reach out within 24–48 hours.</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar / Contact info -->
+        <div class="col-12 col-lg-5">
+          <div class="card card-elevated h-100">
+            <div class="card-body p-4 p-md-5 d-flex flex-column">
+              <h3 class="h5 mb-3">Need help before booking?</h3>
+              <p class="text-secondary" style="color:#b7c3d9 !important;">
+                Our team can advise on staffing, venue risk, and arrival logistics.
+              </p>
+              <ul class="list-unstyled mb-4">
+                <li class="mb-2"><strong>Email:</strong> support@supremesecurity.example</li>
+                <li class="mb-2"><strong>Phone:</strong> (212) 555‑0136</li>
+                <li class="mb-2"><strong>Hours:</strong> 9am–6pm ET, Mon–Sat</li>
+              </ul>
+              <hr class="muted-divider">
+              <h4 class="h6 mt-3 mb-2">What happens next?</h4>
+              <ol class="mb-0 small text-secondary" style="color:#aab8d0 !important;">
+                <li>We review your request and may follow up for details.</li>
+                <li>You'll get a confirmation email and a tentative quote.</li>
+                <li>Secure your date with a deposit link.</li>
+              </ol>
+              <div class="mt-auto pt-4 small text-secondary" style="color:#94a3b8 !important;">
+                By submitting, you consent to being contacted about your booking. Your data is never sold.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-4 border-top border-opacity-25">
+    <div class="container small d-flex justify-content-between">
+      <span>© <span id="year"></span> SUPREME SECURITY</span>
+      <span>Privacy • Terms</span>
+    </div>
+  </footer>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background:#0f1422; color:#e8eeff; border:1px solid rgba(255,255,255,.08);">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Request received</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Thanks for your request. We'll email you shortly with next steps.</p>
+          <div class="small text-secondary">Ref: <span id="ref"></span></div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-navy" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Helpers
+    const byId = id => document.getElementById(id);
+
+    // Set year
+    byId('year').textContent = new Date().getFullYear();
+
+    // Set min date = today
+    (function setMinDate(){
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const iso = today.toISOString().slice(0,10);
+      byId('date').setAttribute('min', iso);
+    })();
+
+    // Format phone on blur (basic)
+    byId('phone').addEventListener('blur', (e)=>{
+      const digits = e.target.value.replace(/\D/g,'').slice(0,10);
+      if(digits.length === 10){
+        e.target.value = `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+      }
+    });
+
+    // Bootstrap validation + mock submit
+    (function(){
+      const form = document.getElementById('bookingForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const spinner = submitBtn.querySelector('.spinner-border');
+      const copy = submitBtn.querySelector('.submit-copy');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          return;
+        }
+
+        // Honeypot check
+        if (document.getElementById('company').value) return; // bot
+
+        // Simulate async submit — replace with real fetch() to your backend / Google Apps Script / Netlify / EmailJS
+        spinner.classList.remove('d-none');
+        submitBtn.setAttribute('disabled', 'disabled');
+        copy.textContent = 'Submitting...';
+
+        setTimeout(()=>{
+          spinner.classList.add('d-none');
+          submitBtn.removeAttribute('disabled');
+          copy.textContent = 'Submit Booking';
+
+          // Reset and show success
+          form.reset();
+          form.classList.remove('was-validated');
+          byId('ref').textContent = 'SS-' + Math.random().toString(36).slice(2,10).toUpperCase();
+          const modal = new bootstrap.Modal(document.getElementById('successModal'));
+          modal.show();
+        }, 900);
+      }, false);
+    })();
+  </script>
 </body>
 </html>
