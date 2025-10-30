@@ -50,7 +50,7 @@
 
     /* Cards */
     .card-elevated{ background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid var(--border); border-radius:18px; box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05); height:100%; }
-    .card-elevated .card-img-top{ aspect-ratio: 4 / 3; object-fit: cover; }
+    .card-elevated .card-img-top{ aspect-ratio: 3 / 4; object-fit: cover; }
     .card-elevated:hover{ transform: translateY(-2px); transition: transform .2s ease; }
     .badge-soft{ background: rgba(138,180,255,.18); color:#cfe1ff; border:1px solid rgba(138,180,255,.35); }
 
@@ -58,6 +58,16 @@
     footer{ color:#9fb0c9; border-top:1px solid var(--border); }
     .site-footer{ background:#0a101b; border-top:1px solid var(--border); }
     .footer-logo{ width:1in; height:1in; display:block; margin:0 auto; object-fit:cover; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,.35); }
+
+    /* Better crop for portrait photos in cards */
+.card .card-img-top {
+  aspect-ratio: 3 / 4;           /* switch from 4/3 to 3/4 */
+  object-fit: cover;             /* fill without stretching */
+  object-position: center 20%;   /* nudge upward to show heads */
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
   </style>
 </head>
 <body>
