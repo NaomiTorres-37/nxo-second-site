@@ -1,109 +1,195 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home — SUPREME SECURITY</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
-    <title>Home - SUPREME SECURITY</title>
-    <style>
-      .jumbotron-image {
-        position: relative;
-        height: 100vh; /* full viewport height */
-        background: url('https://www.dropbox.com/scl/fi/5vrjl3kyw6vaxw0pbjjzb/Screenshot-2025-09-24-at-3.02.42-PM.png?rlkey=61cr2g145vaprkedoq9cndseb&st=iapvs0tl&raw=1') no-repeat center center;
-        background-size: cover;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: white;
-      }
-  
-      .jumbotron-image::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5); /* semi-transparent overlay */
-        z-index: 1;
-      }
-  
-      .jumbotron-image .container {
-        position: relative;
-        z-index: 2; /* ensures text and button appear above overlay */
-      }
-    </style>
-    
-  
-  </head>
+  <style>
+    :root{
+      --navy:#0f2a55;          /* brand */
+      --navy-600:#15346b;      /* brand hover */
+      --ink:#0b0f19;           /* page bg */
+      --panel:#121826;         /* card bg */
+      --panel-2:#0f1422;       /* darker */
+      --border:rgba(255,255,255,.08);
+      --ring:rgba(15,42,85,.35);
+      --text:#e8eeff;          /* base text */
+      --muted:#aab7cc;         /* secondary text */
+      --accent:#8ab4ff;        /* soft blue */
+    }
 
-  <body style = "background-color: black; color: white;">
-    <!-- Paste this at the top of the <body> of each page -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <!-- Your site name/logo -->
-    <a class="navbar-brand" href="index.html">SUPREME SECURITY</a>
+    html,body{height:100%;}
+    body{ background: var(--ink); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+    h1,h2,h3,h4,h5,h6{ font-family: 'Montserrat', system-ui, sans-serif; letter-spacing:.3px; }
 
-    <!-- Mobile hamburger menu -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    /* Navbar */
+    .navbar{ background: rgba(11,15,25,.85) !important; backdrop-filter: blur(8px); border-bottom:1px solid var(--border); }
 
-    <!-- Tabs -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="bookings.html">Bookings</a>
-        </li>
-      </ul>
+    /* Hero */
+    .hero{
+      position: relative; height: 100vh; min-height: 560px; display:flex; align-items:center; color:#fff; overflow: hidden;
+      background: url('https://www.dropbox.com/scl/fi/5vrjl3kyw6vaxw0pbjjzb/Screenshot-2025-09-24-at-3.02.42-PM.png?rlkey=61cr2g145vaprkedoq9cndseb&st=iapvs0tl&raw=1') center/cover no-repeat;
+    }
+    .hero::before{ content:""; position:absolute; inset:0; background:
+      linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.55) 30%, rgba(0,0,0,.6) 100%),
+      radial-gradient(1200px 600px at 85% -10%, rgba(13,110,253,.18), transparent 60%);
+      z-index:1; }
+    .hero .container{ position:relative; z-index:2; }
+
+    .eyebrow{ display:inline-flex; gap:.5rem; align-items:center; padding:.4rem .75rem; border-radius:999px; font-weight:600; font-size:.9rem; color:#cfe1ff; background:rgba(15,42,85,.22); border:1px solid rgba(15,42,85,.45); }
+
+    .hero h1{ text-shadow: 0 8px 30px rgba(0,0,0,.45); }
+    .hero .btn-cta{ background: var(--navy); border:none; color:#fff; padding:.85rem 1.25rem; border-radius: .8rem; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .hero .btn-cta:hover{ background: var(--navy-600); }
+    .hero .btn-outline{ border-color:#cfe1ff; color:#cfe1ff; padding:.85rem 1.25rem; border-radius:.8rem; }
+    .hero .btn-outline:hover{ background:#cfe1ff; color:#0a1020; }
+
+    /* Stats */
+    .stats{ background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02)); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stat{ text-align:center; padding: 24px 12px; }
+    .stat h3{ color:#fff; font-weight:700; }
+    .stat p{ color: var(--muted); margin:0; }
+
+    /* Services */
+    .section{ padding: 64px 0; }
+    .section-title{ color:#fff; }
+    .card-service{ background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid var(--border); border-radius:18px; box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05); height:100%; }
+    .card-service .icon{ width:44px; height:44px; border-radius:12px; background: rgba(138,180,255,.18); display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px; }
+    .card-service h5{ color:#eaf1ff; }
+    .card-service p{ color: var(--muted); }
+
+    /* Testimonials */
+    .testi .card{ background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid var(--border); color:#e8eeff; }
+    .quote{ font-style: italic; opacity:.95; }
+
+    /* Footer */
+    footer{ color:#9fb0c9; border-top:1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">SUPREME SECURITY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="bookings.html">Bookings</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- jumbotron -->
-<section class="jumbotron-image">
-  <div class="container">
-    <h1 class="display-3 fw-bold mb-3">PREVENTION IS BETTER THAN CURE</h1>
-    <p class="lead mb-4">Professional security services for individuals, celebrities, and events</p>
-    <a href="bookings.html" class="btn btn-light btn-lg">Book Now</a>
-  </div>
-</section>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container text-center">
+      <span class="eyebrow mb-3">Discreet • Reliable • Elite</span>
+      <h1 class="display-4 fw-bold mb-3">PREVENTION IS BETTER THAN CURE</h1>
+      <p class="lead mb-4" style="color:#cfe1ff; max-width: 760px; margin:0 auto;">Professional protection for individuals, celebrities, and events — staffed by vetted, experienced security specialists.</p>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="bookings.html" class="btn btn-cta">Book Now</a>
+        <a href="about.html" class="btn btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
 
-<!-- Testimonials -->
-<section id="testimonials" class="bg-dark py-5 text-center text-light">
-  <div class="container">
-    <h2 class="mb-4">What Our Clients Say</h2>
-    <div class="row justify-content-center">
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container py-4">
+      <div class="row row-cols-2 row-cols-md-4 g-3">
+        <div class="col"><div class="stat"><h3>250+</h3><p>Events Secured</p></div></div>
+        <div class="col"><div class="stat"><h3>98%</h3><p>Client Satisfaction</p></div></div>
+        <div class="col"><div class="stat"><h3>24/7</h3><p>Rapid Response</p></div></div>
+        <div class="col"><div class="stat"><h3>10yrs</h3><p>Industry Experience</p></div></div>
+      </div>
+    </div>
+  </section>
 
-      <div class="col-md-6 mb-3">
-        <div class="card bg-secondary text-light p-3">
-          <p class="fst-italic">“The team provided amazing protection for our event. I felt completely safe the entire time!”</p>
-          <p class="fw-bold">- Jane D., Event Planner</p>
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">Services</h2>
+        <p class="text-muted" style="color:var(--muted) !important;">Tailored protection plans for each client and venue.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-service p-4">
+            <div class="icon"><span class="fw-bold">CP</span></div>
+            <h5>Celebrity Protection</h5>
+            <p>Low‑profile executive protection with advance route planning and access control.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-service p-4">
+            <div class="icon"><span class="fw-bold">EV</span></div>
+            <h5>Event Security</h5>
+            <p>Guest screening, perimeter control, bag checks, and incident response.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-service p-4">
+            <div class="icon"><span class="fw-bold">BG</span></div>
+            <h5>Personal Bodyguard</h5>
+            <p>Close protection officers for travel, appearances, and private engagements.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-service p-4">
+            <div class="icon"><span class="fw-bold">RA</span></div>
+            <h5>Risk Consulting</h5>
+            <p>Site assessments, threat modeling, and incident preparedness training.</p>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="col-md-6 mb-3">
-        <div class="card bg-secondary text-light p-3">
-          <p class="fst-italic">“Professional, discreet, and highly skilled. Highly recommend their services.”</p>
-          <p class="fw-bold">- Mark S., Celebrity Client</p>
+  <!-- Testimonials -->
+  <section class="section testi" id="testimonials">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title">What Our Clients Say</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card p-4 h-100">
+            <p class="quote mb-3">“The team provided amazing protection for our event. I felt completely safe the entire time!”</p>
+            <div class="small text-muted" style="color:var(--muted) !important;">— Jane D., Event Planner</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-4 h-100">
+            <p class="quote mb-3">“Professional, discreet, and highly skilled. Highly recommend their services.”</p>
+            <div class="small text-muted" style="color:var(--muted) !important;">— Mark S., Celebrity Client</div>
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <footer class="py-4">
+    <div class="container small d-flex justify-content-between">
+      <span>© <span id="year"></span> SUPREME SECURITY</span>
+      <span>Privacy • Terms</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
